@@ -2,6 +2,7 @@ package Todo.com.backend.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import Todo.com.backend.models.Task;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/tasks")
 public class TaskController {
 
