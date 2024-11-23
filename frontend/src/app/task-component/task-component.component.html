@@ -1,11 +1,12 @@
-    <div class="container border border-white mt-3">
+
+<div class="container border border-white mt-3">
         <h1 class="text-primary text-center">Spring Boot + Angular</h1>
         <h3 class="text-primary text-center">Task Management App</h3>
     </div>
     
     <div class="container mt-5">
         <div class="row">
-            <div class="col-6 border border-danger">
+            <div class="col-5 border border-danger ms-4 rounded-1">
                 <form (ngSubmit)="createTask()" class="text-light mt-3" autocomplete="off">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Task Name</label>
@@ -13,14 +14,59 @@
                     </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Task Description</label>
-                            <textarea class="form-control" [(ngModel)]="newTask.Description" name="Description" placeholder="Enter Task Description" rows="4" cols="50"></textarea>    
+                            <textarea class="form-control" [(ngModel)]="newTask.description" name="Description" placeholder="Enter Task Description" rows="4" cols="50"></textarea>    
                     </div>
                     <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" [(ngModel)]="newTask.completed" name="complete" />
                     <label class="form-check-label" for="exampleCheck1">Click here if complete the task is completed</label>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-3">Add Task</button>
+                    <button type="submit" class="btn btn-success mb-3">Add Task</button>
             </form>
+            </div>
+
+            <!-- Table for showing the data -->
+             <div class="col-6 ms-5 border border-danger rounded-1">
+                <div *ngIf="(tasks.length<0); else taskList">
+                    <h1 class="text-Danger">No Data Found</h1>
+                </div>
+
+                <ng-template #taskList>
+                    <div class="scrollabel">
+                        <table class="table table-dark table-stripped">
+                            <thead class="table-primary">
+                            <tr>
+                                <th scope="col">Sl No</th>
+                                <th scope="col">Task Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Completed</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+
+                            <!-- autogenerate sl.no -->
+                            <tbody class="table-group-divider text-wrap" *ngFor="let i of tasks; let sl_no = index"> 
+                                <tr>
+                                    <th scope="row">{{sl_no+1}}</th>
+                                    <td>{{i.taskName}}</td>
+                                    <td>{{i.description}}</td>
+                                    <td *ngIf="(i.completed==true); else incomplete"><img src="icons/yes.png" alt="completed" width="25px" height="25px"></td>
+                                    <td><button class="btn btn-primary" width="25px" height="20px"> edit </button>
+                                         <button class="btn btn-danger mt-2">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ng-template>
+                
+
+                <ng-template #incomplete>
+                    <td>
+                        <img src="icons/no.png" alt="incomplete" width="25px" height="25px">
+                    </td>
+                </ng-template>
+                
+                    
+                    
             </div>
         </div>
     </div>

@@ -6,6 +6,6 @@
 export interface Task {
     id?: number;
     taskName: string;
-    Description: string;
+    description: string;
     completed: boolean;
 }

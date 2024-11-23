@@ -14,12 +14,6 @@ public class Task {
     private String taskName;
     private String Description;
     private boolean completed;
-
-    public Task(String Description, boolean completed, String taskName) {
-        this.Description = Description;
-        this.completed = completed;
-        this.taskName = taskName;
-    }
     
     public Long getId() {
         return id;
