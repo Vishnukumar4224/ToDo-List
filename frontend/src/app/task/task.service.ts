@@ -30,4 +30,9 @@ export class TaskService {
   creatTask(newTask: Task):Observable<Task>{
     return this.httpClient.post<Task>(this.apiUrl, newTask);
   }
+
+  //this method shows all the tasks and it uses the array[] to show.
+  getAllTask():Observable<Task[]>{
+    return this.httpClient.get<Task[]>(this.apiUrl);
+  }
 }
