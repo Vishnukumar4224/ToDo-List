@@ -33,10 +33,10 @@ public class Task {
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
-    public Sting getDescription() {
+    public String getDescription() {
         return Description;
     }
-    public void setDescription(Sting description) {
+    public void setDescription(String description) {
         Description = description;
     }
     public boolean isCompleted() {
