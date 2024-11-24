@@ -35,4 +35,8 @@ export class TaskService {
   getAllTask():Observable<Task[]>{
     return this.httpClient.get<Task[]>(this.apiUrl);
   }
+
+  deleteTask(taskId: number){
+    return this.httpClient.delete(this.apiUrl+'/'+taskId);
+  }
 }

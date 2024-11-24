@@ -35,12 +35,24 @@ export class TaskComponentComponent implements OnInit{
     this.taskService.creatTask(this.newTask).subscribe((CreatedTask)=>{
       this.newTask = {"taskName": "","description": "","completed":false};// After getting CreatedTask we reset newTask
       this.tasks.push(CreatedTask); //automaticlly add the task into the table
+      alert("The Task is added");
     })
   }
 
   getAlltasks(){
     this.taskService.getAllTask().subscribe((tasks)=>{
       this.tasks = tasks;
+    })
+  }
+
+  deleteTask(taskId: any){
+    if(confirm("Are You Sure want to delete this Task?"))
+    this.taskService.deleteTask(taskId)
+    .subscribe(()=>{
+      this.tasks = this.tasks.filter((task)=>task.id !== taskId);
+      alert("Task is deleted");
+
+
     })
   }
 }
