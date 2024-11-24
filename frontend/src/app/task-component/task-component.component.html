@@ -50,8 +50,8 @@
                                     <td>{{i.taskName}}</td>
                                     <td>{{i.description}}</td>
                                     <td *ngIf="(i.completed==true); else incomplete"><img src="icons/yes.png" alt="completed" width="25px" height="25px"></td>
-                                    <td><button class="btn btn-primary" width="25px" height="20px"> edit </button>
-                                         <button class="btn btn-danger mt-2">Delete</button></td>
+                                    <td><button class="btn btn-primary"> edit </button>
+                                         <button class="btn btn-danger mt-2" (click)="deleteTask(i.id)">Delete</button></td>
                                 </tr>
                             </tbody>
                         </table>
