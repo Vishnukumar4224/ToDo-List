@@ -29,12 +29,16 @@ export class TaskComponentComponent implements OnInit{
   //this property shows the initial value as empty
   tasks: Task[]= [];
 
+  editingTask: Task| null = null;
+  updatedTask: Task = {"taskName": "","description": "","completed":false};
+
   //Subscribe calls the observable's function that produces and emits data
   //Inside Subscribe creat the  call back which gives "CreatedTask" data
   createTask():void{
     this.taskService.creatTask(this.newTask).subscribe((CreatedTask)=>{
       this.newTask = {"taskName": "","description": "","completed":false};// After getting CreatedTask we reset newTask
       this.tasks.push(CreatedTask); //automaticlly add the task into the table
+      alert("The Task is added");
     })
   }
 
@@ -43,4 +47,14 @@ export class TaskComponentComponent implements OnInit{
       this.tasks = tasks;
     })
   }
+
+  deleteTask(taskId: any){
+    if(confirm("Are You Sure want to delete this Task?"))
+    this.taskService.deleteTask(taskId)
+    .subscribe(()=>{
+      this.tasks = this.tasks.filter((task)=>task.id !== taskId);
+      alert("Task is deleted");
+    })
+  }  
+
 }

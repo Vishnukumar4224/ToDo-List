@@ -2,10 +2,10 @@
 <div class="container border border-white mt-3">
         <h1 class="text-primary text-center">Spring Boot + Angular</h1>
         <h3 class="text-primary text-center">Task Management App</h3>
-    </div>
+</div>
     
     <div class="container mt-5">
-        <div class="row">
+        <div class="row" id="CreateTask">
             <div class="col-5 border border-danger ms-4 rounded-1">
                 <form (ngSubmit)="createTask()" class="text-light mt-3" autocomplete="off">
                     <div class="mb-3">
@@ -21,7 +21,7 @@
                     <label class="form-check-label" for="exampleCheck1">Click here if complete the task is completed</label>
                     </div>
                     <button type="submit" class="btn btn-success mb-3">Add Task</button>
-            </form>
+                </form>
             </div>
 
             <!-- Table for showing the data -->
@@ -50,8 +50,8 @@
                                     <td>{{i.taskName}}</td>
                                     <td>{{i.description}}</td>
                                     <td *ngIf="(i.completed==true); else incomplete"><img src="icons/yes.png" alt="completed" width="25px" height="25px"></td>
-                                    <td><button class="btn btn-primary" width="25px" height="20px"> edit </button>
-                                         <button class="btn btn-danger mt-2">Delete</button></td>
+                                    <td>
+                                      <button class="btn btn-danger " (click)="deleteTask(i.id)">Delete</button></td>
                                 </tr>
                             </tbody>
                         </table>
